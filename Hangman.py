@@ -1,5 +1,121 @@
 import random
 
+Graphics = (
+"""
+""",
+
+"""
+    _
+    |
+    |
+    |
+    |
+    |
+    |
+    |
+    """,
+
+"""
+    _
+    |
+    |
+    |
+    |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      
+    |
+    |
+    |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |
+    |
+    |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |
+    |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |      |
+    |      |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |     /|
+    |    / |
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |     /|\ 
+    |    / | \ 
+    |
+    |
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |     /|\ 
+    |    / | \ 
+    |     /
+    |    /
+    |__________
+    """,
+
+"""
+    _______
+    |      |
+    |     (_)
+    |     /|\ 
+    |    / | \ 
+    |     / \ 
+    |    /   \ 
+    |__________
+    """)
+
+wrong = 0
+
 print("Welcome to hangman!\n")
 
 with open("hangman_list.txt", "r") as file:
@@ -8,7 +124,7 @@ with open("hangman_list.txt", "r") as file:
 word = random.choice(words)
 
 guessed_word = list("_" * len(word))
-lives = 15
+lives = 10
 wordGuessed = False
 
 while lives>=1 and not wordGuessed == True:
@@ -28,6 +144,8 @@ while lives>=1 and not wordGuessed == True:
     if letter_in_word == False and user_guess != word:
         lives -= 1
         print("You guessed incorrectly")
+        wrong = wrong + 1
+        print (Graphics[wrong])
 
     if user_guess == word:
         print(" ".join(guessed_word))
